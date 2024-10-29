@@ -90,6 +90,7 @@ fun CharactersScreen(navController: NavHostController, movieId: String, viewMode
                                 .fillMaxSize()
                                 .padding(10.dp)
                         ) {
+
                             items(state.data) { character ->
                                 CharacterListItem(character) {
                                     // Handle click event to navigate to the detail screen

@@ -5,4 +5,5 @@
     <string name="title_character_detail">Character Detail</string>
     <string name="title_quote_list">Quote List</string>
     <string name="not_available">Not Available</string>
+    <string name="see_quotes">See Quotes</string>
 </resources>

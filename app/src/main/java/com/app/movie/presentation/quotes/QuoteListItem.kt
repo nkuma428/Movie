@@ -26,10 +26,9 @@ fun QuoteListItem(quote: Quote) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(120.dp)
             .padding(vertical = 4.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
         Box(
             modifier = Modifier.fillMaxSize(),
@@ -46,7 +45,7 @@ fun QuoteListItem(quote: Quote) {
                     modifier = Modifier.weight(1f)
                 ) {
                     Text(
-                        text = quote.movie ?: stringResource(id = R.string.not_available),
+                        text = quote.dialog ?: stringResource(id = R.string.not_available),
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color.Black

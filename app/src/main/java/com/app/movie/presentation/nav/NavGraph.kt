@@ -16,10 +16,10 @@ import com.app.movie.util.AppConstants
 import com.google.gson.Gson
 
 @Composable
-fun NavGraph(navController: NavHostController, viewModel: MovieListViewModel) {
+fun NavGraph(navController: NavHostController) {
 
     NavHost(navController = navController, startDestination = AppConstants.ROUTE_MOVIE_LIST_SCREEN) {
-        composable(AppConstants.ROUTE_MOVIE_LIST_SCREEN) { MovieListScreen(viewModel, navController) }
+        composable(AppConstants.ROUTE_MOVIE_LIST_SCREEN) { MovieListScreen(navController) }
 
         composable(
             route = "${AppConstants.ROUTE_CHARACTERS_SCREEN}/{movieId}",

@@ -27,7 +27,7 @@ fun CharacterListItem(character: Character, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(120.dp)
+            .height(80.dp)
             .padding(vertical = 4.dp)
             .clickable { onClick() },// Makes the card clickable
         colors = CardDefaults.cardColors(containerColor = Color.White),

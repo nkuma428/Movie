@@ -18,15 +18,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.app.movie.R
+import com.app.movie.presentation.characters.viewmodel.CharacterViewModel
 import com.app.movie.presentation.movies.viewmodel.MovieListViewModel
 import com.app.movie.util.AppConstants
 import com.app.movie.util.UiState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MovieListScreen(viewModel: MovieListViewModel, navController: NavController) {
+fun MovieListScreen(navController: NavController, viewModel: MovieListViewModel = hiltViewModel()) {
 
     val uiState = viewModel.movieResponse.collectAsState()
 
@@ -67,7 +69,15 @@ fun MovieListScreen(viewModel: MovieListViewModel, navController: NavController)
                                 .padding(10.dp)
                         ) {
                             items(state.data) { movie ->
-                                MovieListItem(movie) {
+                                MovieCard(
+                                    name = movie.name ?: stringResource(id = R.string.not_available),
+                                    runtimeInMinutes = movie.runtimeInMinutes ?: 0,
+                                    budgetInMillions = movie.budgetInMillions ?: 0.0,
+                                    boxOfficeRevenueInMillions = movie.boxOfficeRevenueInMillions ?: 0.0,
+                                    academyAwardNominations = movie.academyAwardNominations ?: 0,
+                                    academyAwardWins = movie.academyAwardWins ?: 0,
+                                    rottenTomatoesScore = movie.rottenTomatoesScore ?: 0.0
+                                ) {
                                     // Handle click event to navigate to the detail screen
                                     navController.navigate("${AppConstants.ROUTE_CHARACTERS_SCREEN}/${movie.id.toString()}")
                                 }
