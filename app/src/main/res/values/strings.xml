@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Movie</string>
+    <string name="title_movie_list">Movie List</string>
+    <string name="title_character_list">Character List</string>
+    <string name="title_character_detail">Character Detail</string>
+    <string name="title_quote_list">Quote List</string>
+    <string name="not_available">Not Available</string>
+</resources>
