@@ -11,6 +11,7 @@ import androidx.compose.material.icons.filled.ThumbUp
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,7 +27,6 @@ fun MovieCard(
     boxOfficeRevenueInMillions: Double,
     academyAwardNominations: Int,
     academyAwardWins: Int,
-    rottenTomatoesScore: Double,
     onClick: () -> Unit) {
 
     Card(
@@ -50,7 +50,10 @@ fun MovieCard(
             )
 
             // Divider for separating title and details
-            Divider(color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.2f), thickness = 1.dp)
+            HorizontalDivider(
+                thickness = 1.dp,
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.2f)
+            )
 
             Column(modifier = Modifier.padding(top = 8.dp)) {
                 MovieInfoRow(label = "Runtime", value = "$runtimeInMinutes min", icon = Icons.Default.Star)

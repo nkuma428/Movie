@@ -1,7 +1,10 @@
 package com.app.movie.data.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Movie (
     @SerializedName("_id")
     var id : String? = null,
@@ -18,5 +21,7 @@ data class Movie (
     @SerializedName("academyAwardWins")
     var academyAwardWins : Int? = null,
     @SerializedName("rottenTomatoesScore")
-    var rottenTomatoesScore : Double? = null
-)
+    var rottenTomatoesScore : Double? = null,
+    var quoteList : ArrayList<Quote> = arrayListOf(),
+    var characterList : ArrayList<Character> = arrayListOf()
+): Parcelable

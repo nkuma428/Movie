@@ -1,5 +1,6 @@
 package com.app.movie.presentation.movies.listing
 
+import android.net.Uri
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -21,10 +22,10 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.app.movie.R
-import com.app.movie.presentation.characters.viewmodel.CharacterViewModel
 import com.app.movie.presentation.movies.viewmodel.MovieListViewModel
 import com.app.movie.util.AppConstants
 import com.app.movie.util.UiState
+import com.google.gson.Gson
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -75,11 +76,11 @@ fun MovieListScreen(navController: NavController, viewModel: MovieListViewModel 
                                     budgetInMillions = movie.budgetInMillions ?: 0.0,
                                     boxOfficeRevenueInMillions = movie.boxOfficeRevenueInMillions ?: 0.0,
                                     academyAwardNominations = movie.academyAwardNominations ?: 0,
-                                    academyAwardWins = movie.academyAwardWins ?: 0,
-                                    rottenTomatoesScore = movie.rottenTomatoesScore ?: 0.0
+                                    academyAwardWins = movie.academyAwardWins ?: 0
                                 ) {
                                     // Handle click event to navigate to the detail screen
-                                    navController.navigate("${AppConstants.ROUTE_CHARACTERS_SCREEN}/${movie.id.toString()}")
+                                    val movieJson = Uri.encode(Gson().toJson(movie))
+                                    navController.navigate("${AppConstants.ROUTE_CHARACTERS_SCREEN}/${movieJson}")
                                 }
                             }
                         }

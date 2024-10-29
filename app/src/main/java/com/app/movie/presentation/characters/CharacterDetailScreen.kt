@@ -21,10 +21,15 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.app.movie.R
 import com.app.movie.data.model.Character
+import com.app.movie.data.model.Quote
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CharacterDetailScreen(navController: NavHostController, character: Character) {
+fun CharacterDetailScreen(
+    navController: NavHostController,
+    character: Character,
+    quoteList: List<Quote>
+) {
 
     Scaffold(
         topBar = {
@@ -61,11 +66,11 @@ fun CharacterDetailScreen(navController: NavHostController, character: Character
 
                     CharacterDetail(
                         navController = navController,
-                        characterId = character.id.toString(),
                         name = character.name?: stringResource(id = R.string.not_available),
                         race = character.race?: stringResource(id = R.string.not_available),
                         gender = character.gender?: stringResource(id = R.string.not_available),
-                        spouse = if (character.spouse == true) "Yes" else "No"
+                        spouse = if (character.spouse == true) "Yes" else "No",
+                        quoteList = quoteList
                     )
                 }
             }
