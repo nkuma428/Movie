@@ -6,4 +6,5 @@
     <string name="title_quote_list">Quote List</string>
     <string name="not_available">Not Available</string>
     <string name="see_quotes">See Quotes</string>
+    <string name="record_not_found_please_check_with_diff_movie">Record not found, Please check with diff movie</string>
 </resources>
