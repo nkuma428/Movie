@@ -1,5 +1,6 @@
 package com.app.movie.util
 
+import android.content.SharedPreferences
 import com.app.movie.data.model.Character
 import com.app.movie.data.model.Movie
 import com.app.movie.data.model.Quote
@@ -38,6 +39,24 @@ class MovieUtils {
                     this.characterList = ArrayList(characterList.filter { it.id in characterIds })
                 }
             }
+        }
+        fun loadFavorites(sharedPreferences: SharedPreferences): List<String> {
+            return sharedPreferences.getStringSet("favorite_movies", emptySet())?.toList() ?: emptyList()
+        }
+
+        fun toggleFavorite(sharedPreferences: SharedPreferences, movieId: String, onUpdated: (List<String>) -> Unit) {
+            val currentFavorites = sharedPreferences.getStringSet("favorite_movies", emptySet())?.toMutableSet() ?: mutableSetOf()
+
+            if (currentFavorites.contains(movieId)) {
+                currentFavorites.remove(movieId) // Remove from favorites
+            } else {
+                currentFavorites.add(movieId) // Add to favorites
+            }
+
+            // Save updated favorites to SharedPreferences
+            sharedPreferences.edit().putStringSet("favorite_movies", currentFavorites).apply()
+
+            onUpdated(currentFavorites.toList()) // Callback to update the state
         }
     }
 }

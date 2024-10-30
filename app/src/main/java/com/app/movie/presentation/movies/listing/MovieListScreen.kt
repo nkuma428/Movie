@@ -1,36 +1,38 @@
 package com.app.movie.presentation.movies.listing
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.net.Uri
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.app.movie.R
 import com.app.movie.presentation.movies.viewmodel.MovieListViewModel
+import com.app.movie.presentation.widgets.ErrorText
 import com.app.movie.util.AppConstants
+import com.app.movie.util.MovieUtils.Companion.loadFavorites
+import com.app.movie.util.MovieUtils.Companion.toggleFavorite
 import com.app.movie.util.UiState
 import com.google.gson.Gson
 
@@ -45,6 +47,11 @@ import com.google.gson.Gson
 fun MovieListScreen(navController: NavController, viewModel: MovieListViewModel = hiltViewModel()) {
 
     val uiState = viewModel.movieResponse.collectAsState()
+    val context = LocalContext.current
+    val sharedPreferences: SharedPreferences = context.getSharedPreferences("movie_prefs", Context.MODE_PRIVATE)
+
+    // Load favorite movies from SharedPreferences
+    val favoriteMovies = remember { mutableStateOf(loadFavorites(sharedPreferences)) }
 
     Scaffold(
         topBar = {
@@ -92,13 +99,20 @@ fun MovieListScreen(navController: NavController, viewModel: MovieListViewModel 
                                 .padding(10.dp)
                         ) {
                             items(state.data) { movie ->
+                                val isFavorite = favoriteMovies.value.contains(movie.id)
                                 MovieCard(
                                     name = movie.name ?: stringResource(id = R.string.not_available),
                                     runtimeInMinutes = movie.runtimeInMinutes ?: 0,
                                     budgetInMillions = movie.budgetInMillions ?: 0.0,
                                     boxOfficeRevenueInMillions = movie.boxOfficeRevenueInMillions ?: 0.0,
                                     academyAwardNominations = movie.academyAwardNominations ?: 0,
-                                    academyAwardWins = movie.academyAwardWins ?: 0
+                                    academyAwardWins = movie.academyAwardWins ?: 0,
+                                    isFavorite = isFavorite,
+                                    onFavoriteClick = {
+                                        toggleFavorite(sharedPreferences, movie.id.toString()) { updatedFavorites ->
+                                            favoriteMovies.value = updatedFavorites // Update the favorites state
+                                        }
+                                    }
                                 ) {
                                     // Handle click event to navigate to the detail screen
                                     val movieJson = Uri.encode(Gson().toJson(movie))
@@ -110,14 +124,7 @@ fun MovieListScreen(navController: NavController, viewModel: MovieListViewModel 
                 }
                 is UiState.Error -> {
                     // Display an error message in the center of the screen
-                    Box(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(padding),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(text = state.message)
-                    }
+                    ErrorText(message = state.message)
                 }
                 else -> TODO()
             }

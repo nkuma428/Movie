@@ -53,6 +53,7 @@ fun CharacterDetailScreen(
                         name = character.name?: stringResource(id = R.string.not_available),
                         race = character.race?: stringResource(id = R.string.not_available),
                         gender = character.gender?: stringResource(id = R.string.not_available),
+                        birth = character.birth?: stringResource(id = R.string.not_available),
                         spouse = if (character.spouse == true) "Yes" else "No",
                         quoteList = quoteList
                     )

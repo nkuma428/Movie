@@ -44,6 +44,7 @@ fun CharacterDetail(
     name: String,
     race: String,
     gender: String,
+    birth: String,
     spouse: String,
     quoteList: List<Quote>
 ) {
@@ -84,12 +85,14 @@ fun CharacterDetail(
 
             HorizontalDivider(
                 thickness = 1.dp,
-                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.2f)
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.2f),
+                modifier = Modifier.padding(top = 16.dp)
             )
 
             Column(modifier = Modifier.padding(top = 8.dp)) {
                 CharacterInfo(label = "Race", value = race)
                 CharacterInfo(label = "Gender", value = gender)
+                CharacterInfo(label = "Birth", value = birth)
                 CharacterInfo(label = "Spouse", value = spouse)
             }
         }

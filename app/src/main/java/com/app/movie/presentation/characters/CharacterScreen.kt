@@ -8,17 +8,15 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.app.movie.R
 import com.app.movie.data.model.Movie
 import com.app.movie.presentation.widgets.CenteredTopAppBar
+import com.app.movie.presentation.widgets.ErrorText
 import com.app.movie.util.AppConstants
 import com.google.gson.Gson
 
@@ -50,11 +48,7 @@ fun CharactersScreen(navController: NavHostController, movie: Movie) {
             ) {
                 if (movie.characterList.isEmpty()) {
                     // Display "Record not found" message in the center
-                    Text(
-                        text = stringResource(R.string.record_not_found_please_check_with_diff_movie),
-                        color = Color.Gray,
-                        modifier = Modifier.align(Alignment.Center)
-                    )
+                    ErrorText(message = stringResource(R.string.record_not_found_please_check_with_diff_movie))
                 } else {
                     LazyColumn(
                         modifier = Modifier
