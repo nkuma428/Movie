@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-
     kotlin("kapt")
     alias(libs.plugins.dagger.hilt.android)
     id("kotlin-parcelize")
@@ -62,8 +61,6 @@ dependencies {
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
-    //implementation(libs.androidx.material3)
-
     implementation(libs.androidx.material3.android)
     implementation(libs.navigation.compose)
     implementation(libs.hilt.android)
@@ -73,7 +70,8 @@ dependencies {
     implementation(libs.okhttp.logging.interceptor)
     implementation(libs.compose.foundation)
     implementation(libs.lifecycle.viewmodel.compose)
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation(libs.hilt.navigation.compose)
+    implementation(libs.material.icons.extended)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

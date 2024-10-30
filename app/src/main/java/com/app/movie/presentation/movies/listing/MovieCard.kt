@@ -6,11 +6,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccessTime
+import androidx.compose.material.icons.filled.AttachMoney
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.ThumbUp
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -18,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+
 
 @Composable
 fun MovieCard(
@@ -56,9 +58,9 @@ fun MovieCard(
             )
 
             Column(modifier = Modifier.padding(top = 8.dp)) {
-                MovieInfoRow(label = "Runtime", value = "$runtimeInMinutes min", icon = Icons.Default.Star)
-                MovieInfoRow(label = "Budget", value = "$${budgetInMillions}M", icon = Icons.Default.Star)
-                MovieInfoRow(label = "Box Office", value = "$${boxOfficeRevenueInMillions}M", icon = Icons.Default.Star)
+                MovieInfoRow(label = "Runtime", value = "$runtimeInMinutes min", icon = Icons.Default.AccessTime)
+                MovieInfoRow(label = "Budget", value = "$${budgetInMillions}M", icon = Icons.Default.AttachMoney)
+                MovieInfoRow(label = "Box Office", value = "$${boxOfficeRevenueInMillions}M", icon = Icons.Default.AttachMoney)
                 MovieInfoRow(label = "Nominations", value = academyAwardNominations.toString(), icon = Icons.Default.ThumbUp)
                 MovieInfoRow(label = "Awards Won", value = academyAwardWins.toString(), icon = Icons.Default.Star)
             }
