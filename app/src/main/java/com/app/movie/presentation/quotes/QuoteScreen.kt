@@ -26,6 +26,12 @@ import androidx.navigation.NavHostController
 import com.app.movie.R
 import com.app.movie.data.model.Quote
 
+/**
+ * Composable function to display the quote screen.
+ *
+ * @param navController The navigation controller to handle navigation actions.
+ * @param quoteList The list of quotes to be displayed.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun QuoteScreen(navController: NavHostController, quoteList: List<Quote>) {
@@ -58,7 +64,6 @@ fun QuoteScreen(navController: NavHostController, quoteList: List<Quote>) {
             )
         },
         content = { padding ->
-
             Box(
                 modifier = Modifier
                     .fillMaxSize()

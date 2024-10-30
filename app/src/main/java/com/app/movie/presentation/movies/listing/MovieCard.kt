@@ -20,7 +20,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
-
+/**
+ * Composable function to display a movie card with various details.
+ *
+ * @param name The name of the movie.
+ * @param runtimeInMinutes The runtime of the movie in minutes.
+ * @param budgetInMillions The budget of the movie in millions.
+ * @param boxOfficeRevenueInMillions The box office revenue of the movie in millions.
+ * @param academyAwardNominations The number of Academy Award nominations the movie received.
+ * @param academyAwardWins The number of Academy Awards the movie won.
+ * @param onClick The callback to be invoked when the card is clicked.
+ */
 @Composable
 fun MovieCard(
     name: String,

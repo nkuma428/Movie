@@ -11,17 +11,28 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * ViewModel for managing the movie list.
+ *
+ * @property getMovieListUseCase Use case for fetching the movie list.
+ */
 @HiltViewModel
 class MovieListViewModel @Inject constructor(
     private val getMovieListUseCase: GetMovieListUseCase
 ) : ViewModel() {
+
+
+     //Initializes the ViewModel and loads the movies.
     init {
         loadMovies()
     }
 
     private val _movieResponse = MutableStateFlow<UiState<List<Movie>>>(UiState.Loading)
+
+    //Publicly exposed state flow for the movie response.
     val movieResponse: StateFlow<UiState<List<Movie>>> get() = _movieResponse
 
+     //Loads the movies by invoking the use case and updates the state flow.
     fun loadMovies() {
         viewModelScope.launch {
             val result = getMovieListUseCase()

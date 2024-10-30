@@ -26,6 +26,13 @@ import com.app.movie.R
 import com.app.movie.data.model.Character
 import com.app.movie.data.model.Quote
 
+/**
+ * Composable function to display the character detail screen.
+ *
+ * @param navController The navigation controller to handle navigation actions.
+ * @param character The character data to be displayed.
+ * @param quoteList The list of quotes associated with the character.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CharacterDetailScreen(

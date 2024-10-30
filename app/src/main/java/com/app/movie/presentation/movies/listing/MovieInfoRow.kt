@@ -15,6 +15,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 
+/**
+ * Composable function to display a row of movie information with an icon, label, and value.
+ *
+ * @param label The label for the information.
+ * @param value The value of the information.
+ * @param icon The icon to be displayed alongside the information.
+ * @param valueColor The color of the value text. Defaults to the onSurface color of the MaterialTheme.
+ */
 @Composable
 fun MovieInfoRow(
     label: String,

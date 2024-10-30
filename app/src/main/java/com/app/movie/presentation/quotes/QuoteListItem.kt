@@ -21,6 +21,11 @@ import androidx.compose.ui.unit.sp
 import com.app.movie.R
 import com.app.movie.data.model.Quote
 
+/**
+ * Composable function to display a quote item in a card.
+ *
+ * @param quote The quote to be displayed.
+ */
 @Composable
 fun QuoteListItem(quote: Quote) {
     Card(

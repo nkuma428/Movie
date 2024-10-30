@@ -28,6 +28,16 @@ import com.app.movie.util.AppConstants
 import com.google.gson.Gson
 import kotlin.random.Random
 
+/**
+ * Composable function to display the details of a character.
+ *
+ * @param navController The navigation controller to handle navigation actions.
+ * @param name The name of the character.
+ * @param race The race of the character.
+ * @param gender The gender of the character.
+ * @param spouse The spouse of the character.
+ * @param quoteList The list of quotes associated with the character.
+ */
 @Composable
 fun CharacterDetail(
     navController: NavHostController,

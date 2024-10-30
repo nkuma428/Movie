@@ -8,10 +8,20 @@ import com.app.movie.util.MovieUtils.Companion.updateMovieQuotes
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 
+/**
+ * Fetches the list of movies, updates them with characters and quotes, and returns the result.
+ *
+ * @return A Result containing the MovieResponse.
+ */
 class GetMovieListRepositoryImpl(
     private val apiService: ApiService
 ) : GetMovieListRepository {
 
+    /**
+     * Fetches the list of movies, updates them with characters and quotes, and returns the result.
+     *
+     * @return A Result containing the MovieResponse.
+     */
     override suspend fun getMovieList(): Result<MovieResponse> {
         return try {
             val movieResponse = coroutineScope {

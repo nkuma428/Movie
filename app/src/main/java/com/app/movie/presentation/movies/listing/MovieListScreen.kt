@@ -34,6 +34,12 @@ import com.app.movie.util.AppConstants
 import com.app.movie.util.UiState
 import com.google.gson.Gson
 
+/**
+ * Composable function to display the movie list screen.
+ *
+ * @param navController The navigation controller to handle navigation actions.
+ * @param viewModel The ViewModel that provides the movie list data.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MovieListScreen(navController: NavController, viewModel: MovieListViewModel = hiltViewModel()) {

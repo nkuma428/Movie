@@ -12,6 +12,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
+/**
+ * Composable function to display character information with a label and value.
+ *
+ * @param label The label for the information.
+ * @param value The value of the information.
+ * @param valueColor The color of the value text. Defaults to the onSurface color of the MaterialTheme.
+ */
 @Composable
 fun CharacterInfo(
     label: String,

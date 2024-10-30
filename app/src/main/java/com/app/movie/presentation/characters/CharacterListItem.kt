@@ -22,6 +22,12 @@ import androidx.compose.ui.unit.sp
 import com.app.movie.R
 import com.app.movie.data.model.Character
 
+/**
+ * Composable function to display a character list item.
+ *
+ * @param character The character data to be displayed.
+ * @param onClick The callback to be invoked when the item is clicked.
+ */
 @Composable
 fun CharacterListItem(character: Character, onClick: () -> Unit) {
     Card(

@@ -1,5 +1,8 @@
 package com.app.movie.util
 
+/**
+ * Utility class to hold application constants.
+ */
 class AppConstants {
     companion object {
         const val BASE_URL = "https://e21a086a-4f08-425a-b99c-a9bbe7539a40.mock.pstmn.io/v2/"

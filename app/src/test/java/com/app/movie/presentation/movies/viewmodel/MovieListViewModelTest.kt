@@ -20,8 +20,11 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
 
+//Unit test class for MovieListViewModel
 @ExperimentalCoroutinesApi
 class MovieListViewModelTest {
+
+    //Rule to allow LiveData to execute synchronously.
 
     @get:Rule
     var rule: TestRule = InstantTaskExecutorRule()
@@ -31,6 +34,7 @@ class MovieListViewModelTest {
 
     private val testDispatcher = UnconfinedTestDispatcher()
 
+    //Sets up the test environment before each test.
     @Before
     fun setUp() {
         Dispatchers.setMain(testDispatcher)
@@ -38,6 +42,7 @@ class MovieListViewModelTest {
         viewModel = MovieListViewModel(getMovieListUseCase)
     }
 
+    //Test to verify that `loadMovies` emits a success state when the use case returns data.
     @Test
     fun `loadMovies should emit success state when use case returns data`() = runTest {
         // Given
@@ -54,6 +59,7 @@ class MovieListViewModelTest {
         assertEquals(movies, (state as UiState.Success).data)
     }
 
+    //Test to verify that `loadMovies` emits an error state when the use case returns an error.
     @Test
     fun `loadMovies should emit error state when use case returns error`() = runTest {
         // Given
@@ -69,6 +75,8 @@ class MovieListViewModelTest {
         assertEquals("Error message", (state as UiState.Error).message)
     }
 
+
+    //Cleans up the test environment after each test.
     @After
     fun tearDown() {
         Dispatchers.resetMain()

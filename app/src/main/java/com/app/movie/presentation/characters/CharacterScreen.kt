@@ -33,6 +33,12 @@ import com.app.movie.data.model.Movie
 import com.app.movie.util.AppConstants
 import com.google.gson.Gson
 
+/**
+ * Composable function to display the characters screen for a given movie.
+ *
+ * @param navController The navigation controller to handle navigation actions.
+ * @param movie The movie data containing the list of characters.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CharactersScreen(navController: NavHostController, movie: Movie) {

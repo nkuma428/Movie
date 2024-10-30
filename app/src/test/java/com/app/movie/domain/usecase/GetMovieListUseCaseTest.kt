@@ -12,6 +12,7 @@ import io.mockk.MockKVerificationScope
 import io.mockk.MockKAnnotations
 import io.mockk.impl.annotations.RelaxedMockK
 
+//Unit test class for GetMovieListUseCase.
 class GetMovieListUseCaseTest {
 
     private lateinit var getMovieListUseCase: GetMovieListUseCase
@@ -19,12 +20,14 @@ class GetMovieListUseCaseTest {
     @RelaxedMockK
     private lateinit var repository: GetMovieListRepository
 
+    //Sets up the test environment before each test.
     @Before
     fun setUp() {
         MockKAnnotations.init(this)
         getMovieListUseCase = GetMovieListUseCase(repository)
     }
 
+    //Test to verify that the use case returns a movie list when the repository call is successful.
     @Test
     fun `should return movie list when repository call is successful`() = runBlockingTest {
         // Given
@@ -38,6 +41,7 @@ class GetMovieListUseCaseTest {
         assertEquals(expectedMovies, result)
     }
 
+    //Test to verify that the use case returns an error when the repository call fails.
     @Test
     fun `should return error when repository call fails`() = runBlockingTest {
         // Given

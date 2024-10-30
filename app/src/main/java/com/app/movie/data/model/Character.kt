@@ -4,6 +4,21 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
+/**
+ * Data class representing a Character in the movie.
+ *
+ * @property id The unique identifier of the character.
+ * @property name The name of the character.
+ * @property wikiUrl The URL to the character's wiki page.
+ * @property race The race of the character.
+ * @property birth The birth date of the character.
+ * @property gender The gender of the character.
+ * @property death The death date of the character.
+ * @property hair The hair color of the character.
+ * @property height The height of the character.
+ * @property realm The realm of the character.
+ * @property spouse Indicates if the character has a spouse.
+ */
 @Parcelize
 data class Character (
     @SerializedName("_id")

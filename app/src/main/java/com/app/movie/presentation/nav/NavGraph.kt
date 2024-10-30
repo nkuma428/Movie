@@ -17,6 +17,11 @@ import com.app.movie.presentation.quotes.QuoteScreen
 import com.app.movie.util.AppConstants
 import com.google.gson.Gson
 
+/**
+ * Composable function to set up the navigation graph for the application.
+ *
+ * @param navController The navigation controller to handle navigation actions.
+ */
 @Composable
 fun NavGraph(navController: NavHostController) {
 
