@@ -4,15 +4,15 @@ import com.google.gson.annotations.SerializedName
 
 data class MovieResponse(
     @SerializedName("docs")
-    var movieList : ArrayList<Movie> = arrayListOf(),
+    var movieList: List<Movie> = arrayListOf(),
     @SerializedName("total")
-    var total : Int? = null,
+    var total: Int? = null,
     @SerializedName("limit")
-    var limit : Int? = null,
+    var limit: Int? = null,
     @SerializedName("offset")
-    var offset : Int? = null,
+    var offset: Int? = null,
     @SerializedName("page")
-    var page : Int? = null,
+    var page: Int? = null,
     @SerializedName("pages")
-    var pages : Int? = null
+    var pages: Int? = null
 )

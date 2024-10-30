@@ -22,7 +22,7 @@ class MovieListViewModel @Inject constructor(
     private val _movieResponse = MutableStateFlow<UiState<List<Movie>>>(UiState.Loading)
     val movieResponse: StateFlow<UiState<List<Movie>>> get() = _movieResponse
 
-    private fun loadMovies() {
+    fun loadMovies() {
         viewModelScope.launch {
             val result = getMovieListUseCase()
             // doc: write code for handling the result
