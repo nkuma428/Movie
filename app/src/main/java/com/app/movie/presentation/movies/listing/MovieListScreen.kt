@@ -51,20 +51,13 @@ fun MovieListScreen(navController: NavController, viewModel: MovieListViewModel 
             // TopAppBar with custom colors and title
             TopAppBar(
                 title = {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.Center
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(end = 20.dp), // Ensures title is centered with back button
+                        contentAlignment = Alignment.Center
                     ) {
                         Text(text = stringResource(id = R.string.title_movie_list))
-                    }
-                },
-                navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Back",
-                            tint = Color.White
-                        )
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
