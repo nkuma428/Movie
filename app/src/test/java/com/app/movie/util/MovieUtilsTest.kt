@@ -1,9 +1,8 @@
-package com.app.movie.uil
+package com.app.movie.util
 
 import com.app.movie.data.model.Character
 import com.app.movie.data.model.Movie
 import com.app.movie.data.model.Quote
-import com.app.movie.util.MovieUtils
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
