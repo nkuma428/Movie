@@ -1,6 +1,8 @@
 package com.app.movie.presentation.nav
 
+import android.app.Activity
 import android.net.Uri
+import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -59,6 +61,17 @@ fun NavGraph(navController: NavHostController) {
             val quoteListJson = backStackEntry.arguments?.getString("quoteList").orEmpty()
             val quoteList = Gson().fromJson(Uri.decode(quoteListJson), Array<Quote>::class.java).toList()
             QuoteScreen(navController, quoteList)
+        }
+    }
+
+    BackHandler {
+        val currentRoute = navController.currentBackStackEntry?.destination?.route
+        if (currentRoute == AppConstants.ROUTE_MOVIE_LIST_SCREEN) {
+            // If on the Movie List Screen, finish the activity
+            (navController.context as? Activity)?.finish()
+        } else {
+            // Otherwise, navigate back in the NavController stack
+            navController.popBackStack()
         }
     }
 }
